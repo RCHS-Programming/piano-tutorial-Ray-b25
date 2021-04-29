@@ -10,6 +10,9 @@ public class Piano extends World
 {
     private String[] whiteKeys ={ "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "\\" };
     private String[] whiteNotes ={ "2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g" };
+    
+    private String[] blackKeys ={ "W", "E", "", "T", "Y", "U", "", "O", "P", "", "]" };   
+    private String[] blackNotes ={ "3c#", "3d#", "", "3f#", "3g#", "3a#", "", "4c#", "4d#", "", "4f#" }; 
     /**
      * Make the piano.
      */
@@ -27,8 +30,15 @@ public class Piano extends World
         
         for (i=0; i<whiteKeys.length; i++)
         {
-            Key key = new Key (whiteKeys[i], whiteNotes[i] + ".wav", "white-key.png", "white-key-down.png");
-            addObject (key, 54 + i*63, 140);
+             Key key = new Key (whiteKeys[i], whiteNotes[i] + ".wav", "white-key.png", "white-key-down.png");              
+             addObject (key, 54 + i*63, 140);
+        }
+        
+         for(i = 0; i < whiteKeys.length-1; i++){               
+            if( ! blackKeys[i].equals("") ){                      
+             Key key = new Key(blackKeys[i], blackNotes[i]+".wav", "black-key.png", "black-key-down.png");          
+             addObject(key, 85 + (i*63), 86);                
+            }
         }
     }
 }
